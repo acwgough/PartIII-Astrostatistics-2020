@@ -91,7 +91,7 @@ maximum likelihood, properties of MLE, Fisher information, Cramer-Rao Bound
 
 **Week 5** - Statistical Computation  
 **Lecture 13 - 14 Feb 2020**  
-* Intuition of local Hubble constant estimation
+* Intuitive discussion of local Hubble constant estimation  
 * Finish parallax discussion
 * More Bayesian Inference: Gaussian with unknown mean and variance  
 * Sufficient statistics, Likelihood principle  
