@@ -26,7 +26,7 @@ Recommended Texts:
 Introduction to the Course
 
 **Lecture 02 - 20 Jan 2020**  
-Introdution to Astronomical Data & Case Studies  
+Introduction to Astronomical Data & Case Studies  
 
 **Lecture 03 - 22 Jan 2020**  
 Probability foundations - F&B Ch 2, Ivezić Ch 3  
