@@ -36,6 +36,7 @@ multivariate continuous rvs, transformation of rvs
 **Lecture 04 - 24 Jan 2020**  
 Probability foundations -  
 multivariate pdfs, covariance, propagation of error, limit theorems  
+discussion of estimators  
 
 **Lecture 05 - 27 Jan 2020**  
 statistical inference - F&B Ch 3, Ivezić Ch 4  
