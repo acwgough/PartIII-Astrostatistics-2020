@@ -102,7 +102,13 @@ maximum likelihood, properties of MLE, Fisher information, Cramer-Rao Bound
 
 **Lecture 14 - 17 Feb 2020**
 * Continue Monte Carlo Sampling  
+* Gaussian with unknown mean and variance, noninformative priors
+* Direct sampling
 * Importance Sampling and Self-Normalised Importance Weights  
+* Application to Bayesian parallax problem
+* Application: Patel et al. 2017, 2018 - Weighing the Milky Way Galaxy  
+
+**Lecture 15 - 19 Feb 2020**  
 * Application: Patel et al. 2017, 2018 - Weighing the Milky Way Galaxy  
 
 **Week 6** - Markov Chain Monte Carlo  
