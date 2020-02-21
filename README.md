@@ -110,8 +110,9 @@ maximum likelihood, properties of MLE, Fisher information, Cramer-Rao Bound
 
 **Lecture 15 - 19 Feb 2020**  
 * Application: Patel et al. 2017, 2018 - Weighing the Milky Way Galaxy  
+* Markov Chain Monte Carlo: 1D Metropolis Algorithm  
 
-**Week 6** - Markov Chain Monte Carlo  
+**Week 6** - More Markov Chain Monte Carlo  
 
 **Week 7** - Gaussian Processes and Astronomical Time Series Analysis  
 
