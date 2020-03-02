@@ -3,7 +3,7 @@
 clear all
 close all
 
-fs = 12;
+fs = 16;
 
 log_p = @(xx) -0.5*xx.^2 -0.5*log(2*pi);
 
@@ -19,26 +19,34 @@ xgrid = (-5:0.1:5)';
 
 % initial values
 % uniformly distributed between -5 and 5
-%x0s = 10*rand(n_chains,1) - 5;
+% x0s = 10*rand(n_chains,1) - 5;
 
 % all starting at x0 = -3
 % x0s = zeros(n_chains,1) - 3;
 
 % starting at -4 or 4
-x0s = 4*(2*binornd(1,0.5,n_chains,1)-1);
+%x0s = 4*(2*binornd(1,0.5,n_chains,1)-1);
+
+% starting at an off-centered Gaussians centered at + 3
+x0s = 3 + randn(n_chains,1)*0.25;
 
 %histogram of starting values
 figure(1)
-histogram(x0s)
-set(gca,'FontSize',fs);
+histogram(x0s,'Normalization','pdf')
 title(['Histogram of initial valuess'],'FontSize',fs);
-set(gca,'Xtick',[-4:2:4])
+hold on
+plot(xgrid,normpdf(xgrid,0,1),'LineWidth',3)
+hold off
+xlabel('x','FontSize',fs);
+ylabel('pdf','FontSize',fs);
+set(gca,'FontSize',fs);
+%set(gca,'Xtick',[-4:2:4])
 
 % keep track of current values
 xs = x0s;
 log_p_curr = log_p(xs);
 
-%%
+%% run a simple 1D Metropolis accept/reject algorithm
 
 disp('Begin MCMCs...');
 tic;
@@ -85,17 +93,12 @@ disp('MCMC done');
 %% load last run
 %load('ergodic_mcmc_uniform.mat');
 %load('ergodic_mcmc_point3p0.mat');
-%load('ergodic_mcmc_bimodal.mat');
+load('ergodic_mcmc_bimodal.mat');
 
 %% Calculate diagnostics
-% putting mc in form for mcmc_calcrhat
-mc1 = zeros(n_mc,1,n_chains);
-mc1(:,1,:) = mc;
 
 % Gelman-Rubin Ratio
-grs = mcmc_calcrhat(mc1);
-max_gr = max(grs)
-%clear mc1
+gr = mcmc_calcrhat_1d(mc)
 
 % autocorrelation function for chain #1
 figure(2)
@@ -112,6 +115,7 @@ ylabel('x','FontSize',fs);
 xlabel('MCMC sample t','FontSize',fs);
 set(gca,'FontSize',fs);
 title(['Trace Plot of Chain #' num2str(c)],'FontSize',fs);
+xlim([0,n_mc])
 
 figure(4)
 histogram(mc(:,c),'Normalization','pdf')
