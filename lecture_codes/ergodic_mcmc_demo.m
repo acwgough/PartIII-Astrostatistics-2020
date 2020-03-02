@@ -5,17 +5,24 @@ close all
 
 fs = 16;
 
+% log of the target probability density
+
+% a standard Gaussian
 log_p = @(xx) -0.5*xx.^2 -0.5*log(2*pi);
+
+% a mixture of Gaussians
+%log_p = @(xx) log(0.5*exp(-0.5*(xx+6).^2)/sqrt(2*pi) + ...
+%    0.35*exp(-0.5*(xx+2).^2)/sqrt(2*pi) + 0.15*exp(-0.15*(xx-2).^2)/sqrt(2*pi)) ;
 
 sigma_prop = 1.5;
 
-n_mc = 20000;
+n_mc = 11999;
 n_chains = 1e4;
 
 mc = zeros(n_mc,n_chains);
 acc = zeros(n_chains,1);
 
-xgrid = (-5:0.1:5)';
+xgrid = (-5:0.1:5)' * 2;
 
 % initial values
 % uniformly distributed between -5 and 5
@@ -25,17 +32,17 @@ xgrid = (-5:0.1:5)';
 % x0s = zeros(n_chains,1) - 3;
 
 % starting at -4 or 4
-%x0s = 4*(2*binornd(1,0.5,n_chains,1)-1);
+ x0s = 4*(2*binornd(1,0.5,n_chains,1)-1);
 
 % starting at an off-centered Gaussians centered at + 3
-x0s = 3 + randn(n_chains,1)*0.25;
+% x0s = 7 + randn(n_chains,1)*1;
 
 %histogram of starting values
 figure(1)
 histogram(x0s,'Normalization','pdf')
 title(['Histogram of initial valuess'],'FontSize',fs);
 hold on
-plot(xgrid,normpdf(xgrid,0,1),'LineWidth',3)
+plot(xgrid,exp(log_p(xgrid)),'LineWidth',3)
 hold off
 xlabel('x','FontSize',fs);
 ylabel('pdf','FontSize',fs);
@@ -93,7 +100,9 @@ disp('MCMC done');
 %% load last run
 %load('ergodic_mcmc_uniform.mat');
 %load('ergodic_mcmc_point3p0.mat');
-load('ergodic_mcmc_bimodal.mat');
+%load('ergodic_mcmc_bimodal.mat');
+%load('ergodic_mcmc_offc.mat');
+%load('ergodic_mcmc_3gaussian.mat');
 
 %% Calculate diagnostics
 
@@ -120,12 +129,12 @@ xlim([0,n_mc])
 figure(4)
 histogram(mc(:,c),'Normalization','pdf')
 hold on
-plot(xgrid,normpdf(xgrid,0,1),'LineWidth',3)
+plot(xgrid,exp(log_p(xgrid)),'LineWidth',3)
 hold off
 xlabel('x','FontSize',fs);
 set(gca,'FontSize',fs);
 title(['Time-Histogram Chain #' num2str(c)],'FontSize',fs);
-set(gca,'Xtick',[-4:2:4])
+%set(gca,'Xtick',[-4:2:4])
 
 %% Look at trace paths for a handful of chains for 100 steps
 figure(5)
@@ -146,40 +155,42 @@ subplot(1,2,1)
 histogram(mc(1,:),'Normalization','pdf');
 xlabel('x','FontSize',fs);
 set(gca,'FontSize',fs);
-xlim([-5,5])
+xlim([-10,10])
 title(['Ensemble at step t = ' num2str(1)],'FontSize',fs);
 hold on
-plot(xgrid,normpdf(xgrid,0,1),'LineWidth',3)
+plot(xgrid,exp(log_p(xgrid)),'LineWidth',3)
 hold off
 ylim([0,0.45]);
-set(gca,'Xtick',[-4:2:4])
+%set(gca,'Xtick',[-4:2:4])
 
 subplot(1,2,2)
 histogram(mc(100,:),'Normalization','pdf');
 xlabel('x','FontSize',fs);
 set(gca,'FontSize',fs);
-xlim([-5,5])
+xlim([-10,10])
 title(['Ensemble at step t = ' num2str(100)],'FontSize',fs);
 hold on
-plot(xgrid,normpdf(xgrid,0,1),'LineWidth',3)
+plot(xgrid,exp(log_p(xgrid)),'LineWidth',3)
 hold off
 ylim([0,0.45]);
-set(gca,'Xtick',[-4:2:4])
+%set(gca,'Xtick',[-4:2:4])
 
 
-%% Look at chain-ensemble distribution over time
+%% Look at chain-ensemble distribution over time until t_max
+
+t_max = 50;
 
 figure(7)
-pause(4)
-for t=1:40
+pause(3)
+for t=1:t_max
     histogram(mc(t,:),'Normalization','pdf')
     hold on
-    plot(xgrid,normpdf(xgrid,0,1),'LineWidth',3)
+    plot(xgrid,exp(log_p(xgrid)),'LineWidth',3)
     hold off
     xlabel('x','FontSize',fs);
     set(gca,'FontSize',fs);
-    xlim([-5,5])
-    set(gca,'Xtick',[-4:2:4])
+    xlim([-10,10])
+    %set(gca,'Xtick',[-4:2:4])
     ylim([0,0.45])
     title([num2str(n_chains) '-Chain Ensemble Histogram at step t = ' num2str(t)],'FontSize',fs);
     F(t) = getframe;
