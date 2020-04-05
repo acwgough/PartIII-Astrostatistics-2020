@@ -113,7 +113,53 @@ maximum likelihood, properties of MLE, Fisher information, Cramer-Rao Bound
 * Markov Chain Monte Carlo: 1D Metropolis Algorithm  
 
 **Week 6** - More Markov Chain Monte Carlo  
+**Lecture 16 - 21 Feb 2020**  
+* 1D Metropolis applied to Parallax example  
+* d-dimensional Metropolis Algorithm  
+* Multivariate Gaussian draws using Cholesky factors  
+* Gaussian with unknown mean and variance example  
 
-**Week 7** - Gaussian Processes and Astronomical Time Series Analysis  
+**Lecture 17 - 24 Feb 2020**
+* Supernova cosmology example with 4D Metropolis  
 
-**Week 8** - Hierarchical Bayesian Models & Model Comparison  
+**Lecture 18 - 26 Feb 2020**  
+* continue SN cosmology 4D Metropolis  
+* Assessing convergence with multiple chains and Gelman-Rubin  
+* Metropolis-Hastings algorithms  
+* Gibbs sampling: correlated 2D Gaussian example  
+
+**Week 7**  
+**Lecture 19 - 28 Feb 2020**  
+* Metropolis-within-Gibbs  
+* Supernova cosmology example: dark energy equation-of-state  
+* Assessing mixing: autocorrelation time, thinning  
+* Efficiency comparison of different MCMC algorithms  
+
+**Lecture 20 - 02 Mar 2020**  
+* Begin sketch of MCMC theory  
+* demo of convergence of MCMC to stationary dist'n  
+* aperiodic, irreducible, ergodic chains  
+* stationary distributions  
+
+**Lecture 21 - 04 Mar 2020**
+* Finish sketch of MCMC theory  
+* detailed balance, reversibility  
+* Metropolis(-Hastings) algorithm respects DB  
+* Mixed Metropolis/Gibbs samplers and parameter blocking  
+* MCMC in practice  
+* Begin Gaussian Processes  
+
+**Week 8**  
+**Lecture 22 - 06 Mar 2020**
+* Gaussian Processes and Astronomical Time Series Analysis  
+* Gravitationally Lensed SN example  
+
+**Lecture 23 - 09 Mar 2020**  
+* Hierarchical Bayesian models in astrophysics  
+* Probabilistic graphical models and Conditional Independence  
+* "Normal-Normal" multi-level model  
+
+**Lecture 24 - 11 Mar 2020**  
+* Gibbs sampling for hierarchical models  
+* Shrinkage and partial pooling  
+* Bayesian model comparison, Bayes factors, and evidence  
