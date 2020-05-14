@@ -2,7 +2,7 @@
 Webpage for Astrostatistics Course, Lent Term 2020  
 Part III Mathematics / Part III Astrophysics
 
-# **Example Sheet 4 has been uploaded!**  
+# **Revision Class: Thu 14 May @ 3:30pm BST! See email for connection info.**  
 
 Lent Term
 Monday, Wednesday & Friday at 12 noon. CMS **Meeting Room 5**.
